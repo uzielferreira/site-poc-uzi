@@ -1,2 +1,2 @@
 # site-poc-uzi
-Site para POC Uziel JR.
+Site para POC Uziel Jr.
