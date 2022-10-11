@@ -4,7 +4,7 @@ name: uzi-pipeline-poc
 
 trigger:
   branch:
-  - master
+  - main
 
 steps:
 - name: lint
