@@ -6,7 +6,16 @@ trigger:
   branch:
   - main
 
+
 steps:
-- name: lint
+- name: backend
+  image: golang
   commands:
-    echo: helow word
+  - go build
+  - go test
+
+- name: frontend
+  image: node
+  commands:
+  - npm install
+  - npm test
