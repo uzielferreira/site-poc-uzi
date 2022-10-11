@@ -1,6 +1,36 @@
-pipeline: 
-  build:
-    image: docker
-    commands:
-      - docker build . < Dockerfile -t uzi-drone-image:latest
-      - docker run
+kind: pipeline
+type: docker
+name: Build Image and Push
+
+trigger:
+  branch:
+  - main
+
+  when:
+    event:
+      exclude:
+      - pull_request
+
+steps:
+- name: build
+  image: ubuntu
+  commands:
+  - docker build .
+
+
+- name: publish
+  image: done-build-image
+  settings:
+    username: uzieljr
+    password: zairaf00270027
+    repo: uzieljr/poc-site
+    tags:
+    - 1.0.0
+    - 1.0
+    
+
+# - name: notify
+#   image: plugins/slack
+#   settings:
+#     channel: developers
+#     username: drone
