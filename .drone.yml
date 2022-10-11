@@ -10,6 +10,8 @@ trigger:
 steps:
 - name: backend
   image: golang
+  environment:
+    - DOCKER_LOUCH_DEBUG-true
   commands:
   - go build
   - go test
