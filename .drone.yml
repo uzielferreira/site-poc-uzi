@@ -26,6 +26,7 @@ steps:
     repo: uzieljr/poc-site
     tags:
     - 1.0.0
+    - 1.0
     
 
 # - name: notify
