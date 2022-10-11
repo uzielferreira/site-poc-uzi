@@ -1,0 +1,48 @@
+kind: pipeline
+type: docker
+name: pipe-uzi-poc
+
+trigger:
+  branch:
+  - main
+
+steps:
+- name: build dockerfile
+  image: uzieljr/poc-site
+  commands:
+  - docker build -t uzieljr/poc-site:latest . 
+# cloud.drone.io runners are using a version of docker prior to 20.10.0, so
+# this step currently fails due to this change in apline 3.14
+# https://wiki.alpinelinux.org/wiki/Release_Notes_for_Alpine_3.14.0#faccessat2
+#  - make lint
+
+- name: push
+  image: appleboy/drone-git-push
+  pull: if-not-exists
+  settings:
+    branch: master
+    remote: git@github.com:drone/charts.git
+    commit: true
+    commit_message: update charts [CI SKIP]
+    ssh_key:
+      from_secret: ssh_deploy_key
+  when:
+    event:
+    - push
+    branch:
+    - master
+
+- name: publish
+  image: lucap/drone-netlify
+  pull: if-not-exists
+  settings:
+    path: ./docs
+    site_id:
+      from_secret: netlify_site_id
+    token:
+      from_secret: netlify_token
+  when:
+    event:
+    - push
+    branch:
+    - master
