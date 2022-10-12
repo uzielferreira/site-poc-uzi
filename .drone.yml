@@ -37,9 +37,6 @@ trigger:
       exclude:
       - pull_request   
 
-
-      
-
 # # - name: notify
 # #   image: plugins/slack
 # #   settings:
