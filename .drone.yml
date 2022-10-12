@@ -7,7 +7,7 @@ name: default-exemple
 steps:
 - name: backend
   image: docker:dind
-  privileged: true
+  privileged: false
   commands:
   - go build
   - go test
