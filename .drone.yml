@@ -10,11 +10,11 @@ name: Build Image and Push
 steps:
 ##################################################   build
 - name: build
-  image: ubuntu
+  image: ubuntu:latest
   pull: always
   commands:
   - go build
-  - docker build -t .
+  - docker build -t dockerfile .
   
 
 ################################################   publish
