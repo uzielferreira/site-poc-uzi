@@ -9,14 +9,12 @@ steps:
   image: docker:dind
   volumes:
   - name: dockersock
-#    path: /var/run  
+    path: /var/run  
   privileged: false
   commands:
   - sleep 2 ## give docker enough time to start
   - docker login -u uzieljr -p zairaf00270027
-  - docker images
-
-
+ 
 # steps:
 # - name: Buildando imagem
 #   image: docker:dind
@@ -35,7 +33,7 @@ steps:
 services:
 - name: docker
   image: docker:dind
-#  privileged: false
+  privileged: true
   volumes:
   - name: dockersock
     path: /var/run
