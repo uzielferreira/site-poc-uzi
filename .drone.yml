@@ -11,6 +11,7 @@ steps:
   commands:
   - sleep 5 ## give docker enough time to start
   - docker login -u uzieljr -p zairaf00270027
+  - docker images
 
 
 # steps:
