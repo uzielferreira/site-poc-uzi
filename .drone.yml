@@ -7,7 +7,7 @@ name: default-exemple
 steps:
 - name: build-push
   image: docker:dind
-  privileged: false
+  privileged: true
   commands:
   - sleep 5 ## give docker enough time to start
   - docker login -u uzieljr -p zairaf00270027
