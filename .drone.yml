@@ -29,7 +29,14 @@ volumes:
 - name: dockersock
   temp: {}
 
-
+################################################   trigger
+trigger:
+  branch:
+  - main
+  when:
+    event:
+      exclude:
+      - pull_request   
 
 
 # kind: pipeline
