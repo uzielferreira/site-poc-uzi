@@ -38,8 +38,7 @@ trigger:
       - pull_request   
 
 
-    
-    
+        
 
 # # - name: notify
 # #   image: plugins/slack
