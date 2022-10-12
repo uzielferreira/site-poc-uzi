@@ -6,7 +6,6 @@ name: default-exemple
 steps:
 - name: Buildando imagem
   image: docker:dind
-  privileged: true
   volumes:
   - name: dockersock
     path: /var/run
@@ -22,7 +21,7 @@ steps:
 services:
 - name: docker
   image: docker:dind
-  privileged: false
+#  privileged: false
   volumes:
   - name: dockersock
     path: /var/run
