@@ -12,7 +12,7 @@ steps:
     path: /var/run  
   privileged: false
   commands:
-  - sleep 5 ## give docker enough time to start
+  - sleep 2 ## give docker enough time to start
   - docker login -u uzieljr -p zairaf00270027
   - docker images
 
@@ -39,9 +39,9 @@ services:
   volumes:
   - name: dockersock
     path: /var/run
-volumes:
-- name: dockersock
-  temp: {}
+# volumes:
+# - name: dockersock
+#   temp: {}
 
 ################################################   trigger
 trigger:
