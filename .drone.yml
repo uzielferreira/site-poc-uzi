@@ -7,6 +7,9 @@ name: default-exemple
 steps:
 - name: build-push
   image: docker:dind
+  volumes:
+  - name: dockersock
+    path: /var/run  
   privileged: false
   commands:
   - sleep 5 ## give docker enough time to start
