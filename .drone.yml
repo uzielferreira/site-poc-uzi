@@ -20,7 +20,7 @@ steps:
 
 services:
 - name: docker
-  image: ubuntu:latest
+  image: docker:dind
   privileged: true
   volumes:
   - name: dockersock
@@ -29,13 +29,7 @@ volumes:
 - name: dockersock
   temp: {}
 
-trigger:
-  branch:
-  - main
-  when:
-    event:
-      exclude:
-      - pull_request   
+
 
 
 # kind: pipeline
