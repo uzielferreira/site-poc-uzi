@@ -6,6 +6,7 @@ name: default-exemple
 steps:
 - name: Buildando imagem
   image: docker:dind
+  privileged: false
   volumes:
   - name: dockersock
     path: /var/run
@@ -25,9 +26,9 @@ services:
   volumes:
   - name: dockersock
     path: /var/run
-# volumes:
-# - name: dockersock
-#   temp: {}
+volumes:
+- name: dockersock
+  temp: {}
 
 ################################################   trigger
 trigger:
