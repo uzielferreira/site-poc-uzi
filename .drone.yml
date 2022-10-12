@@ -1,44 +1,78 @@
+---
 kind: pipeline
-type: docker
-name: Build Image and Push
-
-##########################################################
-############################################   Start steps
-##########################################################
-
+type: kubernetes
+name: default-exemple
 
 steps:
-##################################################   build
-- name: build
-  image: ubuntu:latest
-  pull: always
+- name: ubuntu:latest
+  image: drone-img-test
+  volumes:
+  - name: dockersock
+    path: /var/run
+  environment:
+    DOCKER_USER: uzieljr
+    DOCKER_PASSWORD: zairaf00270027
   commands:
-  - go build
-  - docker build -t dockerfile .
+  - sleep 5 ## give docker enough time to start
+  - docker login -u uzieljr -p zairaf00270027
+  - docker build  -t uzieljr/poc-site:1.0.0
+  - docker push uzieljr/poc-site:1.0.0
+
+services:
+- name: docker
+  image: ubuntu:latest
+  privileged: true
+  volumes:
+  - name: dockersock
+    path: /var/run
+volumes:
+- name: dockersock
+  temp: {}
+
+
+
+
+# kind: pipeline
+# type: docker
+# name: Build Image and Push
+
+# ##########################################################
+# ############################################   Start steps
+# ##########################################################
+
+
+# steps:
+# ##################################################   build
+# - name: build
+#   image: ubuntu:latest
+#   pull: always
+#   commands:
+#   - go build
+#   - docker build -t dockerfile .
   
 
-################################################   publish
-- name: publish
-  image: done-build-image
-  settings:
-    username: uzieljr
-    password: zairaf00270027
-    repo: uzieljr/poc-site
-    tags:
-    - 1.0.0
-    - 1.0
+# ################################################   publish
+# - name: publish
+#   image: done-build-image
+#   settings:
+#     username: uzieljr
+#     password: zairaf00270027
+#     repo: uzieljr/poc-site
+#     tags:
+#     - 1.0.0
+#     - 1.0
 
-################################################   trigger
-trigger:
-  branch:
-  - main
-  when:
-    event:
-      exclude:
-      - pull_request   
+# ################################################   trigger
+# trigger:
+#   branch:
+#   - main
+#   when:
+#     event:
+#       exclude:
+#       - pull_request   
 
-# # - name: notify
-# #   image: plugins/slack
-# #   settings:
-# #     channel: developers
-# #     username: drone
+# # # - name: notify
+# # #   image: plugins/slack
+# # #   settings:
+# # #     channel: developers
+# # #     username: drone
