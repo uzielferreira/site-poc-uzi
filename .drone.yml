@@ -40,6 +40,7 @@ trigger:
       
 
 
+
 # kind: pipeline
 # type: docker
 # name: Build Image and Push
