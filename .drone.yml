@@ -21,13 +21,13 @@ steps:
 services:
 - name: docker
   image: docker:dind
-  privileged: true
-  volumes:
-  - name: dockersock
-    path: /var/run
-volumes:
-- name: dockersock
-  temp: {}
+  privileged: false
+#   volumes:
+#   - name: dockersock
+#     path: /var/run
+# volumes:
+# - name: dockersock
+#   temp: {}
 
 ################################################   trigger
 trigger:
