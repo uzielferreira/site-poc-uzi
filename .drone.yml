@@ -22,9 +22,9 @@ services:
 - name: docker
   image: docker:dind
   privileged: false
-#   volumes:
-#   - name: dockersock
-#     path: /var/run
+  volumes:
+  - name: dockersock
+    path: /var/run
 # volumes:
 # - name: dockersock
 #   temp: {}
