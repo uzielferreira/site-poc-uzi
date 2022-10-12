@@ -5,7 +5,7 @@ name: default-exemple
 
 steps:
 - name: Buildando imagem
-  image: ubuntu:latest
+  image: alpine
   volumes:
   - name: dockersock
     path: /var/run
