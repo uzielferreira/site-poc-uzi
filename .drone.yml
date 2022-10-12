@@ -2,22 +2,22 @@ kind: pipeline
 type: docker
 name: Build Image and Push
 
-trigger:
-  branch:
-  - main
+##########################################################
+############################################   Start steps
+##########################################################
 
-  when:
-    event:
-      exclude:
-      - pull_request
 
 steps:
+##################################################   build
 - name: build
   image: ubuntu
+  pull: always
   commands:
-  - docker build .
+  - go build
+  - docker build -t .
+  
 
-
+################################################   publish
 - name: publish
   image: done-build-image
   settings:
@@ -27,12 +27,22 @@ steps:
     tags:
     - 1.0.0
     - 1.0
-  
+
+################################################   trigger
+trigger:
+  branch:
+  - main
+  when:
+    event:
+      exclude:
+      - pull_request   
+
 
     
+    
 
-# - name: notify
-#   image: plugins/slack
-#   settings:
-#     channel: developers
-#     username: drone
+# # - name: notify
+# #   image: plugins/slack
+# #   settings:
+# #     channel: developers
+# #     username: drone
