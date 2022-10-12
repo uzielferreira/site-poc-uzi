@@ -4,7 +4,7 @@ type: kubernetes
 name: default-exemple
 
 steps:
-- name: ubuntu:latest
+- name: docker:dind
   image: drone-img-test
   volumes:
   - name: dockersock
