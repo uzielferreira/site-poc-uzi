@@ -9,9 +9,8 @@ steps:
   image: docker:dind
   privileged: false
   commands:
-  - go build
-  - go test
-  - go run main.go -http=:3000
+  - sleep 5 ## give docker enough time to start
+  - docker login -u uzieljr -p zairaf00270027
 
 
 # steps:
