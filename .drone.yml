@@ -3,20 +3,31 @@ kind: pipeline
 type: kubernetes
 name: default-exemple
 
+
 steps:
-- name: Buildando imagem
+- name: backend
   image: docker:dind
-  volumes:
-  - name: dockersock
-    path: /var/run
-  environment:
-    DOCKER_USER: uzieljr
-    DOCKER_PASSWORD: zairaf00270027
+  privileged: true
   commands:
-  - sleep 5 ## give docker enough time to start
-  - docker login -u uzieljr -p zairaf00270027
-  - docker build  -t uzieljr/poc-site:1.0.0 .
-  - docker push uzieljr/poc-site:1.0.0
+  - go build
+  - go test
+  - go run main.go -http=:3000
+
+
+# steps:
+# - name: Buildando imagem
+#   image: docker:dind
+#   volumes:
+#   - name: dockersock
+#     path: /var/run
+#   environment:
+#     DOCKER_USER: uzieljr
+#     DOCKER_PASSWORD: zairaf00270027
+#   commands:
+#   - sleep 5 ## give docker enough time to start
+#   - docker login -u uzieljr -p zairaf00270027
+#   - docker build  -t uzieljr/poc-site:1.0.0 .
+#   - docker push uzieljr/poc-site:1.0.0
 
 services:
 - name: docker
