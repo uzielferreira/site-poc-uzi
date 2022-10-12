@@ -4,8 +4,8 @@ type: kubernetes
 name: default-exemple
 
 steps:
-- name: docker:dind
-  image: drone-img-test
+- name: Buildando imagem
+  image: ubuntu:latest
   volumes:
   - name: dockersock
     path: /var/run
@@ -18,16 +18,16 @@ steps:
   - docker build  -t uzieljr/poc-site:1.0.0 .
   - docker push uzieljr/poc-site:1.0.0
 
-services:
-- name: docker
-  image: docker:dind
-  privileged: false
-  volumes:
-  - name: dockersock
-    path: /var/run
-volumes:
-- name: dockersock
-  temp: {}
+# services:
+# - name: docker
+#   image: docker:dind
+#   privileged: false
+#   volumes:
+#   - name: dockersock
+#     path: /var/run
+# volumes:
+# - name: dockersock
+#   temp: {}
 
 ################################################   trigger
 trigger:
