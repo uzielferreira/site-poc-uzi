@@ -16,7 +16,7 @@ steps:
   - docker login -u uzieljr -p zairaf00270027
   - docker build  -t uzieljr/poc-site:latest .
   - docker push uzieljr/poc-site:latest
-  
+
  
 # steps:
 # - name: Buildando imagem
