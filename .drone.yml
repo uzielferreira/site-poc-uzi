@@ -14,7 +14,7 @@ steps:
   commands:
   - sleep 5 ## give docker enough time to start
   - docker login -u uzieljr -p zairaf00270027
-  - docker build  -t uzieljr/poc-site:latest
+  - docker build  -t uzieljr/poc-site:latest .
   - docker push uzieljr/poc-site:latest
  
 # steps:
