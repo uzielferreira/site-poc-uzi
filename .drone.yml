@@ -14,8 +14,8 @@ steps:
   commands:
   - sleep 5 ## give docker enough time to start
   - docker login -u uzieljr -p zairaf00270027
-  - docker build  -t uzieljr/poc-site:["${DRONE_COMMIT_SHA:0:7}","latest"] .
-#  - docker push uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}
+  - docker build  -t uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7} .
+  - docker push uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}
 
 
  
