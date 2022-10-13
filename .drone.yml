@@ -12,9 +12,10 @@ steps:
     path: /var/run  
   privileged: true
   commands:
-  - sleep 2 ## give docker enough time to start
+  - sleep 5 ## give docker enough time to start
   - docker login -u uzieljr -p zairaf00270027
-  - docker images
+  - docker build  -t uzieljr/poc-site:latest
+  - docker push uzieljr/poc-site:latest
  
 # steps:
 # - name: Buildando imagem
