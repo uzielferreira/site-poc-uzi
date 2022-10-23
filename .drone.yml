@@ -19,15 +19,15 @@ steps:
 
 - name: deliver
   image: sinlead/drone-kubectl
-  #Ssettings:
-    #kubernetes_server:
+  Ssettings:
+    kubernetes_server: f107-179-55-90-105.sa.ngrok.io
       #from_secret: k8s_server
     #kubernetes_cert:
       #from_secret: k8s_cert
-    #kubernetes_token:
+    kubernetes_token: 75ae36bfe5d80821d0921211d345782d
       #from_secret: k8s_token
-    commands:
-      - kubectl get namespace
+  commands:
+  - kubectl get namespace
   #get mensage commit to tag
   #- docker build  -t uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7} .
   #- docker push uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}
