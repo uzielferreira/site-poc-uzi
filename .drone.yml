@@ -26,8 +26,8 @@ steps:
       #from_secret: k8s_cert
     #kubernetes_token:
       #from_secret: k8s_token
-  commands:
-  - kubectl get namespace
+    commands:
+      - kubectl get namespace
   #get mensage commit to tag
   #- docker build  -t uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7} .
   #- docker push uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}
