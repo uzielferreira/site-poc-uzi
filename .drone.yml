@@ -1,9 +1,19 @@
----
 kind: pipeline
 type: kubernetes
 name: default-exemple
 
 
+######################################################   trigger
+trigger:
+  branch:
+  - main
+  when:
+    event:
+      exclude:
+      - pull_request   
+
+
+###################################################   build-push
 steps:
 - name: build-push
   image: docker:dind
@@ -16,37 +26,28 @@ steps:
   - docker login -u uzieljr -p zairaf00270027
   - docker build  -t uzieljr/poc-site:latest .
   - docker push uzieljr/poc-site:latest
-
-- name: deliver
-  image: sinlead/drone-kubectl
-  Ssettings:
-    kubernetes_server: f107-179-55-90-105.sa.ngrok.io
-      #from_secret: k8s_server
-    #kubernetes_cert:
-      #from_secret: k8s_cert
-    kubernetes_token: 75ae36bfe5d80821d0921211d345782d
-      #from_secret: k8s_token
-  commands:
-  - kubectl get namespace
   #get mensage commit to tag
   #- docker build  -t uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7} .
   #- docker push uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}
 
-# steps:
-# - name: Buildando imagem
-#   image: docker:dind
-#   volumes:
-#   - name: dockersock
-#     path: /var/run
-#   environment:
-#     DOCKER_USER: uzieljr
-#     DOCKER_PASSWORD: zairaf00270027
-#   commands:
-#   - sleep 5 ## give docker enough time to start
-#   - docker login -u uzieljr -p zairaf00270027
-#   - docker build  -t uzieljr/poc-site:1.0.0 .
-#   - docker push uzieljr/poc-site:1.0.0
 
+######################################################   Delivery
+- name: delivery
+  image: sinlead/drone-kubectl
+  #Ssettings:
+    #kubernetes_server:
+      #from_secret: k8s_server
+    #kubernetes_cert:
+      #from_secret: k8s_cert
+    #kubernetes_token:
+      #from_secret: k8s_token
+  commands:
+  - kubectl get namespace
+
+
+
+
+########################################################   Services   
 services:
 - name: docker
   image: docker:dind
@@ -57,60 +58,3 @@ services:
 volumes:
 - name: dockersock
   temp: {}
-
-################################################   trigger
-trigger:
-  branch:
-  - main
-  when:
-    event:
-      exclude:
-      - pull_request   
-      
-
-
-
-# kind: pipeline
-# type: docker
-# name: Build Image and Push
-
-# ##########################################################
-# ############################################   Start steps
-# ##########################################################
-
-
-# steps:
-# ##################################################   build
-# - name: build
-#   image: ubuntu:latest
-#   pull: always
-#   commands:
-#   - go build
-#   - docker build -t dockerfile .
-  
-
-# ################################################   publish
-# - name: publish
-#   image: done-build-image
-#   settings:
-#     username: uzieljr
-#     password: zairaf00270027
-#     repo: uzieljr/poc-site
-#     tags:
-#     - 1.0.0
-#     - 1.0
-
-# ################################################   trigger
-# trigger:
-#   branch:
-#   - main
-#   when:
-#     event:
-#       exclude:
-#       - pull_request   
-
-# # # - name: notify
-# # #   image: plugins/slack
-# # #   settings:
-# # #     channel: developers
-# # #     username: drone
