@@ -42,9 +42,9 @@ steps:
   - git pull
   - git add site-helm/templates/uzi-poc-site-deployment.yml
   - git commit -m "teste variavel commit" site-helm/templates/uzi-poc-site-deployment.yml
-  - git push \
-  uzielferreira \
-  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
+  - git push 
+  - uzielferreira 
+  - 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
 
 
 
