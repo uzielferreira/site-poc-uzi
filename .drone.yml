@@ -34,6 +34,9 @@ steps:
 ######################################################   Delivery
 - name: delivery
   image: uzieljr/teste-git2
+  settings:
+    username: uzielferreira
+    password: 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
   commands:
   - git config --global user.name uzielferreira
   - git config --global user.email uziel.ferreira@iteris.com.br 
@@ -43,8 +46,8 @@ steps:
   - git add site-helm/templates/uzi-poc-site-deployment.yml
   - git commit -m "teste variavel commit" site-helm/templates/uzi-poc-site-deployment.yml
   - git push 
-  - uzielferreira 
-  - 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
+  #- uzielferreira 
+  #- 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
 
 
 
