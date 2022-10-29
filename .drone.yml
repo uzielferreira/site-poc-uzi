@@ -33,17 +33,9 @@ steps:
 
 ######################################################   Delivery
 - name: delivery
-  image: sinlead/drone-kubectl
-  #Ssettings:
-    #kubernetes_server:
-      #from_secret: k8s_server
-    #kubernetes_cert:
-      #from_secret: k8s_cert
-    #kubernetes_token:
-      #from_secret: k8s_token
+  image: uzieljr/teste-git2
   commands:
-  - kubectl get namespace
-
+  - docker ps -a
 
 
 
