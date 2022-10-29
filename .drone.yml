@@ -1,6 +1,6 @@
 kind: pipeline
 type: kubernetes
-name: default-exemple
+name: MINHA PIPE 
 
 
 ######################################################   trigger
