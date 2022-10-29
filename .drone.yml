@@ -35,7 +35,16 @@ steps:
 - name: delivery
   image: uzieljr/teste-git2
   commands:
-  - docker ps -a
+  - git config --global user.name uzielferreira
+  - git config --global user.email uziel.ferreira@iteris.com.br 
+  - git clone https://github.com/uzielferreira/CD-poc-uzi.git
+  - cd CD-poc-uzi
+  - git pull
+  - git add site-helm/templates/uzi-poc-site-deployment.yml
+  - git commit -m "teste variavel commit" site-helm/templates/uzi-poc-site-deployment.yml
+  - git push \
+  uzielferreira \
+  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
 
 
 
