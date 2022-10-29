@@ -56,9 +56,9 @@ steps:
   settings:
     key: 
       from_secret: ssh_key
-    remote: https://github.com/uzielferreira/CD-poc-uzi.git
-    remote_name: origin
-    branch: main
+    #remote: https://github.com/uzielferreira/CD-poc-uzi.git
+    #remote_name: origin
+    #branch: main
     path:
     commit: true
     commit_message: commit-${DRONE_COMMIT_SHA:0:7}
