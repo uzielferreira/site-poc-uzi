@@ -36,15 +36,16 @@ steps:
   image: uzieljr/teste-git2
   settings:
     username: uzielferreira
-    password: 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
+    password: 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
   commands:
   - git config --global user.name uzielferreira
   - git config --global user.email uziel.ferreira@iteris.com.br 
   - git clone https://github.com/uzielferreira/CD-poc-uzi.git
   - cd CD-poc-uzi
   - git pull
+  - cat  site-helm/templates/uzi-poc-site-deployment.yml > site-helm/templates/uzi-poc-site-deployment.yml
   - git add site-helm/templates/uzi-poc-site-deployment.yml
-  - git commit -m "teste variavel commit" site-helm/templates/uzi-poc-site-deployment.yml
+  - git commit -m "teste variavel commit-${DRONE_COMMIT_SHA:0:7}" site-helm/templates/uzi-poc-site-deployment.yml
   - git push 
   #- uzielferreira 
   #- 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
