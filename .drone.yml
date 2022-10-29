@@ -38,6 +38,7 @@ steps:
     username: uzielferreira
     #password: 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
   commands:
+  - rm -rf CD-poc-uzi
   - git clone git@github.com:uzielferreira/CD-poc-uzi.git
   - cd CD-poc-uzi
   - git pull
@@ -45,7 +46,7 @@ steps:
   - echo ${DRONE_COMMIT_SHA:0:7} >> site-helm/templates/uzi-poc-site-deployment.yml
   - git add site-helm/templates/uzi-poc-site-deployment.yml
   - git add . && git commit -m "Tag do commit ${DRONE_COMMIT_SHA:0:7}" && git push
-  
+
 
 
 
