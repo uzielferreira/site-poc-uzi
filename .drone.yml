@@ -47,9 +47,9 @@ steps:
   - echo ${DRONE_COMMIT_SHA:0:7} >> site-helm/templates/uzi-poc-site-deployment.yml
   - git add site-helm/templates/uzi-poc-site-deployment.yml
   - git commit -m "teste variavel commit-${DRONE_COMMIT_SHA:0:7}" site-helm/templates/uzi-poc-site-deployment.yml
-  - git push -u origin main \
-    uzielferreira \
-    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
+  - git push -u origin main
+  - uzielferreira
+  - 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
   #- uzielferreira 
   #- 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
 
