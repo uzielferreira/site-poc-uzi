@@ -44,22 +44,8 @@ steps:
   - cat  site-helm/templates/uzi-poc-site-deployment.yml > site-helm/templates/uzi-poc-site-deployment.yml
   - echo ${DRONE_COMMIT_SHA:0:7} >> site-helm/templates/uzi-poc-site-deployment.yml
   - git add site-helm/templates/uzi-poc-site-deployment.yml
-  - git add . && git commit -m "Tag do commit ${DRONE_COMMIT_SHA:0:7}" && git push 
+  - git add . && git commit -m "Tag do commit ${DRONE_COMMIT_SHA:0:7}" && git push
   
-
-- name: commit
-  image: appleboy/drone-git-push
-  settings:
-    key: 
-      from_secret: ssh_key
-    #remote: https://github.com/uzielferreira/CD-poc-uzi.git
-    #remote_name: origin
-    #branch: main
-    path:
-    commit: true
-    commit_message: commit-${DRONE_COMMIT_SHA:0:7}
-  #- uzielferreira 
-  #- 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
 
 
 
