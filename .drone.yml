@@ -38,7 +38,6 @@ steps:
     username: uzielferreira
     #password: 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
   commands:
-
   - git clone git@github.com:uzielferreira/CD-poc-uzi.git
   - cd CD-poc-uzi
   - git pull
