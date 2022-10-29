@@ -44,7 +44,7 @@ steps:
   - sed -E 's%(uzieljr/poc-site:).*%\1${DRONE_COMMIT_SHA:0:7}%' /CD-poc-uzi/site-helm/templates/uzi-poc-site-deployment.yml
   #- cat  site-helm/templates/uzi-poc-site-deployment.yml > site-helm/templates/uzi-poc-site-deployment.yml
   #- echo ${DRONE_COMMIT_SHA:0:7} >> site-helm/templates/uzi-poc-site-deployment.yml
-  - git add site-helm/templates/uzi-poc-site-deployment.yml
+  #- git add site-helm/templates/uzi-poc-site-deployment.yml
   - git add . && git commit -m "Tag do commit ${DRONE_COMMIT_SHA:0:7}" && git push
 
 
