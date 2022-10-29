@@ -36,7 +36,7 @@ steps:
   image: uzieljr/teste-git2
   settings:
     username: uzielferreira
-    password: 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
+    #password: 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
   commands:
   - git config --global user.name uzielferreira
   - git config --global user.email uziel.ferreira@iteris.com.br 
