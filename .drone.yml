@@ -24,28 +24,19 @@ steps:
   commands:
   - sleep 5 ## give docker enough time to start
   - docker login -u uzieljr -p zairaf00270027
-  #- docker build  -t uzieljr/poc-site:latest .
-  #- docker push uzieljr/poc-site:latest
-  #get mensage commit to tag
   - docker build  -t uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7} .
   - docker push uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}
 
-  
+
 ######################################################   Delivery
 - name: delivery
   image: uzieljr/plugin-drone:1.0
-  settings:
-    username: uzielferreira
-    #password: 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
   commands:
   - rm -rf CD-poc-uzi
   - git clone git@github.com:uzielferreira/CD-poc-uzi.git
   - cd CD-poc-uzi
   - git pull
   - sed -E -i.bak 's%(uzieljr/poc-site:).*%uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}%' site-helm/templates/uzi-poc-site-deployment.yml
-  #- cat  site-helm/templates/uzi-poc-site-deployment.yml > site-helm/templates/uzi-poc-site-deployment.yml
-  #- echo ${DRONE_COMMIT_SHA:0:7} >> site-helm/templates/uzi-poc-site-deployment.yml
-  #- git add site-helm/templates/uzi-poc-site-deployment.yml
   - git add . && git commit -m "Change image site-poc to uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}" && git push
 
 
