@@ -32,10 +32,10 @@ steps:
 - name: delivery
   image: uzieljr/plugin-drone:1.0
   commands:
-  - rm -rf CD-poc-uzi
+  #- rm -rf CD-poc-uzi
   - git clone git@github.com:uzielferreira/CD-poc-uzi.git
   - cd CD-poc-uzi
-  - git pull
+  #- git pull
   - sed -E -i.bak 's%(uzieljr/poc-site:).*%uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}%' site-helm/templates/uzi-poc-site-deployment.yml
   - git add . && git commit -m "Change image site-poc to uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}" && git push
 
