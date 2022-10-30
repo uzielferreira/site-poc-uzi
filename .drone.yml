@@ -30,7 +30,7 @@ steps:
   - docker build  -t uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7} .
   - docker push uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}
 
-
+  
 ######################################################   Delivery
 - name: delivery
   image: uzieljr/plugin-drone:1.0
@@ -47,8 +47,6 @@ steps:
   #- echo ${DRONE_COMMIT_SHA:0:7} >> site-helm/templates/uzi-poc-site-deployment.yml
   #- git add site-helm/templates/uzi-poc-site-deployment.yml
   - git add . && git commit -m "Change image site-poc to uzieljr/poc-site:${DRONE_COMMIT_SHA:0:7}" && git push
-
-
 
 
 ########################################################   Services   
